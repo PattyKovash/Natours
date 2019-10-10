@@ -2,6 +2,7 @@
 // TABLE OF CONTENTS
 // 1.0 - section-about
 // 2.0 - section-features
+// 3.0 - section-tours
 ////////////////////////////////////////////////////////////////////////////////
 
 
@@ -20,7 +21,7 @@
 // 2.0 - section-features
 //******************************************************************************
 .section-features {
-    padding: 20rem 0;
+    padding: 16rem 0;
     background-image: linear-gradient(
         to right bottom,
         rgba($color-primary-light, 0.8),
@@ -37,4 +38,15 @@
 }
 
 // END 2.0 - section-feature
+//******************************************************************************
+
+// 3.0 - section-tours
+//******************************************************************************
+.section-tours {
+    background-color: $color-grey-light-1;
+    padding: 25rem 0 15rem;
+    margin-top: -11rem;
+}
+
+// END 3.0 - section-tours
 //******************************************************************************
