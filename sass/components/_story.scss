@@ -1,0 +1,78 @@
+.story {
+    width: 75%;
+    margin: 0 auto;
+    box-shadow: 0 3rem 6rem rgba($color-black, .1);
+    background-color: rgba($color-white, .6);
+    border-radius: 3px;
+    padding: 6rem;
+    transform: skewX(-12deg);
+
+    // Compensating for the shape being transformed -3rem in X direction
+    padding-left: 9rem;
+    font-size: $default-font-size;
+
+    // Shape already has a transform property so can't set 2 transforms & &__shape
+    // overrides this definition. Best solution is to directly apply it to &__shape
+    // and &__text
+    // & > * {
+    //     transform: skewX(12deg);
+    // }
+
+    &__shape {
+        width: 15rem;
+        height: 15rem;
+        float: left;
+        position: relative;
+
+        // Only works if has a float, width, & height properties
+        -webkit-shape-outside: circle(50% at 50% 50%);
+        shape-outside: circle(50% at 50% 50%);
+        -webkit-clip-path: circle(50% at 50% 50%);
+        clip-path: circle(50% at 50% 50%);
+
+        // Since floated, best to not mess with padding and margin to move the
+        // element. Instead use transform
+        transform: translateX(-3rem) skewX(12deg);;
+    }
+
+    &__img {
+        height: 100%;
+        transform: translateX(-3.57rem) scale(1.4);
+        backface-visibility: hidden;
+        transition: all .5s;
+    }
+
+    &__text {
+        transform: skewX(12deg);
+    }
+
+    &__caption {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 20%);
+        color: $color-white;
+        text-transform: uppercase;
+        font-size: 1.7rem;
+        text-align: center;
+
+        // Initial state before hover transition
+        opacity: 0;
+        transition: all .5s;
+
+        // Removes small shake when transitioning
+        backface-visibility: hidden;
+
+    }
+
+    &:hover &__caption {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+
+    &:hover &__img {
+        transform: translateX(-3.6rem) scale(1);
+        filter: blur(3px) brightness(80%);
+    }
+}
+
