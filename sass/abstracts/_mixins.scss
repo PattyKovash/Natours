@@ -2,6 +2,7 @@
 // TABLE OF CONTENTS
 // 1.0 - clearfix
 // 2.0 - center-h-v
+// 3.0 - media query
 ////////////////////////////////////////////////////////////////////////////////
 
 // 1.0 - clearfix
@@ -30,3 +31,51 @@
 
 // END 2.0 - center-h-v
 //******************************************************************************
+
+// 3.0 - media query
+//******************************************************************************
+
+/*
+0 - 600px;      Phone
+601 - 900px;    Tablet portrait
+901 - 1200px;   Tablet landscape
+1201 - 1800px;  Desktop
+1800px +        Big Desktop
+*/
+
+@mixin respond-phone {
+    @media screen and (max-width: 600px) { @content };
+}
+
+/*
+$breakpoint argument choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+1em = 16px
+
+- media queries always goes my root font size whether using em or rem
+- better to use relative units in case user changes browser default size
+- ems more reliable then rem for media queries
+*/
+
+@mixin respond($breakpoint) {
+    @if $breakpoint == phone {
+        @media screen and (max-width: 37.5em) { @content }; // 600px
+    }
+    @if $breakpoint == tab-port {
+        @media screen and (max-width: 56.25em) { @content }; // 900px
+    }
+    @if $breakpoint == tab-land {
+        @media screen and (max-width: 75em) { @content }; // 1200px
+    }
+    @if $breakpoint == big-desktop {
+        @media screen and (min-width: 112.5em) { @content }; // 1800px
+    }
+}
+
+// END 3.0 - media query
+//******************************************************************************
+
